@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">Gofit</string>
-    <string name="teste">Teste\'</string>
+    <string name="teste">Teste</string>
+    <string name="email">Email</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="black">black</string>
+    <string name="inscreva_se"><u>Inscreva-se</u></string>
+    <string name="esqeuceu_a_senha"><u>Esqeuceu a senha?</u></string>
+    <string name="altura">Altura</string>
+    <string name="peso">Peso</string>
+    <string name="data_de_nascimento">Nascimento</string>
+    <string name="nome">Nome</string>
+    <string name="todo">TODO</string>
+    <string name="inscrever_se">Inscrever-se</string>
+    <string name="sexo">Sexo</string>
+    <string name="masculino">Masculino</string>
+    <string name="feminino">Feminino</string>
+    <string name="datnascimento">15121995</string>
 </resources>
