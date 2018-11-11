@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchFragment"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/btSearch"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_margin="20sp"
+        android:background="@drawable/edit_text_style"
+        android:ellipsize="start"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="@string/buscar"
+        android:inputType="textCapWords|textPersonName"
+        android:padding="5dp"
+        android:imeOptions="actionSearch"
+        android:singleLine="true" />
+
+    <TextView
+        android:id="@+id/tvNoResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:gravity="center"
+        android:text="@string/buscas_recentes"
+        android:textColor="@android:color/background_light"
+        android:textSize="18sp" />
+
+    <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/lvResult"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_marginTop="10dp"
+        android:columnWidth="90dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" />
+
+</LinearLayout>

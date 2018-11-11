@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gofit</string>
+    <string name="app_name">SerFit</string>
     <string name="teste">Teste</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
@@ -17,4 +17,70 @@
     <string name="masculino">Masculino</string>
     <string name="feminino">Feminino</string>
     <string name="datnascimento">15121995</string>
+    <string name="kind_prompt">Selecione o seu sexo</string>
+    <string name="available_time_prompt">Tempo disponivel</string>
+    <string name="salvar">Salvar</string>
+
+    <string-array name="kind_arrays">
+        <!--<item>Selecione o sexo</item>-->
+        <item>Masculino</item>
+        <item>Fiminio</item>
+    </string-array>
+
+    <string-array name="available_time_arrays">
+        <!--<item>Selecione o tempo disponivel</item>-->
+        <item>de 0 a 10 minutos</item>
+        <item>de 10 a 30 minutos</item>
+        <item>de 30 a 60 minutos</item>
+        <item>60 minutos ou mais</item>
+    </string-array>
+
+
+    <!--Facebook-->
+    <string name="facebook_app_id">2098748207034596</string>
+    <string name="fb_login_protocol_scheme">fb2098748207034596</string>
+    <string name="one">1</string>
+    <string name="buscar">Buscar</string>
+    <string name="exercicios_agendados">Exercicios Agendados</string>
+    <string name="perfil_do_estilo_de_vida">Perfil do estilo de vida</string>
+    <string name="conta">Conta</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="sair">Sair</string>
+    <string name="buscas_recentes">Nenhum resultado</string>
+
+    <string name="recommendationss">Buscando Recomendações</string>
+
+
+    <!--Perfil do estilo de vida-->
+    <string name="texto1">O estilo de vida corresponde ao conjunto de ações habituais que refletem as atitudes, valores e oportunidades das pessoas. Essa ações têm grande influência na saúde geral e qualidade de vida de todos os indíviduos</string>
+    <string name="texto2">Os itens abaixo representam caracteristicas do estilo de vida relacionadas ao bem estar individual, Selecione cada afirmação, considerando a escala:</string>
+    <string name="titulo_perfil">Perfil do estilo de vida individual</string>
+    <string name="item_0">(0) Não faz parte do meu estilo de vida</string>
+    <string name="item_1">(1) Às vezes corresponde ao meu comportamento</string>
+    <string name="item_2">(2) Quase sempre verdadeiro no meu comportamento.</string>
+    <string name="item_3">(3) Faz parte do meu estilo de vida</string>
+
+
+    <string name="nutricao_a">Sua alimentaçãodiária inclui ao menos 5 porções de frutas e verduras</string>
+    <string name="nutricao_b">Você evita ingerir alimentos gordurosos (carnes gordas, friuras) e doces</string>
+    <string name="nutricao_c">Você faz 4 e 5 refeições variadas ao dia, incluindo café da manhã completo</string>
+
+    <string name="atividade_fisica_d">Você realiza ao menos 30 minutos de atividae fisicas moderadas/intensas,de forma continua ou acumulada,5 ou mais dias na semana.</string>
+    <string name="atividade_fisica_e">Ao menos duas vezes por semana,você realiza exercícios que envolvem forca e alongamento muscular.</string>
+    <string name="atividade_fisica_f">No seu dia a dia,voce caminha ou pedala como meio de transporte e ,preferencialmente,usa as escadas ao invés do elevador.</string>
+
+    <string name="comportamento_g">Você conhece sua pressão arterial, seus niveis de colesterol e procura controlá-los.</string>
+    <string name="comportamento_h">Você tem o hábito de se preocupar com a quantidade de horas que deve dormir por noite.</string>
+    <string name="comportamento_i">Você respeita as regras de trânsito, como pedestre ou ciclista.</string>
+
+    <string name="relacionamentos_j">Você procura cultivar amigos e está satisfeito com seus relacionamentos.</string>
+    <string name="relacionamentos_k">Seu lazer inclui encontros com amigos, atividades esportivas em grupo, participação em associações ou entidades sociais. </string>
+    <string name="relacionamentos_l">Você procura ser ativo em sua comunidade, sentindo-se útil no seu ambiente social.</string>
+
+    <string name="controle_m">Você reserva tempo(ao menos 5 minutos)todos os dias para relaxar.</string>
+    <string name="controle_n">Você mantém uma discussão sem alterar-se, mesmo quando contrariado.</string>
+    <string name="controle_o">Você equilibra o tempo dedicado ao trabalho com o tempo dedicado ao lazer.</string>
+    <string name="title_activity_main">MainActivity</string>
+
+
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="one">1</string>
+    <string name="buscar">Buscar</string>
+    <string name="exercicios_agendados">Exercicios Agendados</string>
+    <string name="perfil_do_estilo_de_vida">Perfil do estilo de vida</string>
+    <string name="conta">Conta</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="sair">Sair</string>
+    <string name="buscas_recentes">Nenhum resultado</string>
+</resources>
