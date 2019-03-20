@@ -10,7 +10,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
-        android:layout_height="69dp"
+        android:layout_height="55dp"
         android:gravity="center"
         android:textAlignment="center"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
@@ -22,6 +22,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:title="@string/perfil_do_estilo_de_vida"
             android:background="@color/colorPrimary"
             android:textAlignment="center"
             app:layout_scrollFlags="scroll|enterAlways"

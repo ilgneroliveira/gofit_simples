@@ -11,7 +11,7 @@ public class Exercise {
     private String title;
     private String description;
     private String amount_executed;
-    private String media_url;
+    private String mediaUrl;
     private String media_type;
     private String question_one;
     private String weight_question_one;
@@ -45,12 +45,12 @@ public class Exercise {
         this.amount_executed = amount_executed;
     }
 
-    public String getMedia_url() {
-        return media_url;
+    public String getMediaUrl() {
+        return mediaUrl;
     }
 
-    public void setMedia_url(String media_url) {
-        this.media_url = media_url;
+    public void setMediaUrl(String mediaUrl) {
+        this.mediaUrl = mediaUrl;
     }
 
     public String getMedia_type() {

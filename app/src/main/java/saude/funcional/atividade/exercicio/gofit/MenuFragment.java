@@ -54,8 +54,21 @@ public class MenuFragment extends Fragment {
             }
         });
 
+        TextView tvExerciciosDone = view.findViewById(R.id.tvExerciciosDone);
+        tvExerciciosDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exerciciosDone();
+            }
+        });
+
 
         return view;
+    }
+
+    public void exerciciosDone() {
+        Intent intent = new Intent(getActivity(), ExercisesDoneActivity.class);
+        startActivity(intent);
     }
 
     public void perfilEstiloVida() {

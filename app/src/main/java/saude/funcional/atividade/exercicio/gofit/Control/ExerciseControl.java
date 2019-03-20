@@ -75,7 +75,7 @@ public class ExerciseControl {
                             adapter2.notifyDataSetChanged();
 
                             if (recommedation.getExercises().size() > 0) {
-                                title = "Exercícios";
+                                title = "Sugestões";
                                 tvResult2.setText(title);
                                 is_exercises = true;
                             }

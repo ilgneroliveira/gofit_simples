@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorPrimary"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -45,8 +46,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
 
-    <com.loopj.android.image.SmartImageView
-        android:id="@+id/ivExerciseShow"
+    <!--<com.loopj.android.image.SmartImageView-->
+        <!--android:id="@+id/ivExerciseShow"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:layout_marginEnd="8dp"-->
+        <!--android:layout_marginStart="8dp"-->
+        <!--android:layout_marginTop="28dp"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/titleExercise" />-->
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/youtube_player_view"
         android:layout_width="0dp"
         android:layout_height="200dp"
         android:layout_marginEnd="8dp"
@@ -55,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleExercise" />
+        app:layout_constraintTop_toBottomOf="@+id/titleExercise"/>
 
     <TextView
         android:id="@+id/section_label"
@@ -69,7 +82,7 @@
         android:textSize="60dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivExerciseShow" />
+        app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

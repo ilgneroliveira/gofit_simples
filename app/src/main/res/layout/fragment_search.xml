@@ -27,7 +27,7 @@
         android:layout_gravity="center_vertical|center_horizontal"
         android:gravity="center"
         android:text="@string/buscas_recentes"
-        android:textColor="@android:color/background_light"
+        android:textColor="@color/textColorPrimary"
         android:textSize="18sp" />
 
     <GridView xmlns:android="http://schemas.android.com/apk/res/android"

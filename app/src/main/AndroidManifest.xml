@@ -40,13 +40,13 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".ShowExersiceActivity" >
+        <activity android:name=".ShowExersiceActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
         </activity>
         <activity android:name=".ScheduleExerciseActivity" />
-        <activity android:name=".LifestyleProfileActivity" >
+        <activity android:name=".LifestyleProfileActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".HomeActivity" />
@@ -55,7 +55,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/MyMaterialTheme"></activity>
+            android:theme="@style/MyMaterialTheme" />
+        <activity
+            android:name=".ExercisesDoneActivity"
+            android:theme="@style/MyMaterialTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity" />
+        </activity>
     </application>
 
 </manifest>

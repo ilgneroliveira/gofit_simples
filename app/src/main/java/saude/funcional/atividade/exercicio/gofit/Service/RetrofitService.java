@@ -10,6 +10,7 @@ import retrofit2.http.Path;
 import saude.funcional.atividade.exercicio.gofit.Model.AuthenticateUser;
 import saude.funcional.atividade.exercicio.gofit.Model.Exercise;
 import saude.funcional.atividade.exercicio.gofit.Model.ExerciseDoneSave;
+import saude.funcional.atividade.exercicio.gofit.Model.ExerciseDoneUser;
 import saude.funcional.atividade.exercicio.gofit.Model.LifestyleProfile;
 import saude.funcional.atividade.exercicio.gofit.Model.Recommedation;
 import saude.funcional.atividade.exercicio.gofit.Model.RegisterUser;
@@ -41,8 +42,8 @@ public interface RetrofitService {
     @POST("/lifestyle/profile/new")
     Call<RegisterUser> saveLifestyleProfile(@Body LifestyleProfile lifestyle_profile);
 
-    @POST("/lifestyle/profile")
-    Call<RegisterUser> updateLifestyleProfile(@Body LifestyleProfile lifestyle_profile);
+    @POST("/lifestyle/profile/{id}/save")
+    Call<RegisterUser> updateLifestyleProfile(@Path("id") String id, @Body LifestyleProfile lifestyle_profile);
 
     @POST("/lifestyle/profile/already/create")
     Call<AuthenticateUser> testLifestyleProfile(@Body AuthenticateUser authenticate_user);
@@ -61,4 +62,7 @@ public interface RetrofitService {
 
     @POST("/exercises/done/new")
     Call<RegisterUser> saveExercisesDone(@Body ExerciseDoneSave exerciseDoneSave);
+
+    @POST("/exercises/done/user")
+    Call<ExerciseDoneUser> findExercisesDoneUser(@Body AuthenticateUser authenticate_user);
 }

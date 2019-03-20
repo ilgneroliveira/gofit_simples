@@ -7,13 +7,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerView;
 import com.loopj.android.image.SmartImageView;
 
 import okhttp3.ResponseBody;
@@ -26,7 +29,7 @@ import saude.funcional.atividade.exercicio.gofit.Model.RegisterUser;
 import saude.funcional.atividade.exercicio.gofit.Service.RetrofitService;
 import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 
-public class ShowExersiceActivity extends AppCompatActivity {
+public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener     {
     SmartImageView ivExerciseShow;
     TextView titleExercise;
     Toolbar toolbar;
@@ -37,9 +40,13 @@ public class ShowExersiceActivity extends AppCompatActivity {
     private static final long MILLIS_IN_SEC = 1000L;
     private static final int SECS_IN_MIN = 60;
     private static FloatingActionButton fab;
-    static ExerciseDoneSave exerciseDone;
-    static ProgressDialog dialog;
-    static Context context;
+    public static ExerciseDoneSave exerciseDone;
+    public static ProgressDialog dialog;
+    public static Context context;
+    public static final String API_KEY = "AIzaSyBubbCd9PMfj89eJvZReeaTpGjPE97CMaI";
+    public static String VIDEO_ID = "";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +54,12 @@ public class ShowExersiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_show_exersice);
 
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         context = getApplicationContext();
-        section_label = (TextView) findViewById(R.id.section_label);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        section_label = findViewById(R.id.section_label);
+        fab = findViewById(R.id.fab);
         exerciseDone = new ExerciseDoneSave();
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         String userId = sharedPref.getString("id", null);
@@ -60,7 +67,7 @@ public class ShowExersiceActivity extends AppCompatActivity {
         setupStopwatch();
 
         titleExercise = findViewById(R.id.titleExercise);
-        ivExerciseShow = findViewById(R.id.ivExerciseShow);
+//        ivExerciseShow = findViewById(R.id.ivExerciseShow);
 
         RetrofitService service = ServiceGenerator.createService(RetrofitService.class);
 
@@ -82,7 +89,12 @@ public class ShowExersiceActivity extends AppCompatActivity {
                     //verifica aqui se o corpo da resposta não é nulo
                     if (exercise != null) {
                         titleExercise.setText(exercise.getTitle());
-                        ivExerciseShow.setImageUrl(exercise.getFeaturedImageUrl());
+//                        ivExerciseShow.setImageUrl(exercise.getFeaturedImageUrl());
+
+                        // Initializing YouTube player view
+                        ShowExersiceActivity.VIDEO_ID = exercise.getMediaUrl();
+                        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
+                        youTubePlayerView.initialize(API_KEY, ShowExersiceActivity.this);
                     } else {
                         Toast.makeText(getApplicationContext(), "Resposta nula do servidor", Toast.LENGTH_SHORT).show();
                     }
@@ -165,5 +177,20 @@ public class ShowExersiceActivity extends AppCompatActivity {
         });
 
         handler = new Handler();
+    }
+
+    @Override
+    public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
+        if(null== youTubePlayer) return;
+
+        // Start buffering
+        if (!b) {
+            youTubePlayer.cueVideo(VIDEO_ID);
+        }
+    }
+
+    @Override
+    public void onInitializationFailure(YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
+        Toast.makeText(this, "Failed to initialize.", Toast.LENGTH_LONG).show();
     }
 }

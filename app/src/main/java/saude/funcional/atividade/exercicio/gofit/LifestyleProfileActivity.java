@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -26,6 +27,7 @@ import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 public class LifestyleProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
     String userId;
+    String lifestyleProfileId;
     ProgressDialog dialog;
 
     @Override
@@ -108,7 +110,7 @@ public class LifestyleProfileActivity extends AppCompatActivity {
 
         RetrofitService service = ServiceGenerator.createService(RetrofitService.class);
 
-        service.updateLifestyleProfile(lifestyleProfile).enqueue(new Callback<RegisterUser>() {
+        service.updateLifestyleProfile(lifestyleProfileId,lifestyleProfile).enqueue(new Callback<RegisterUser>() {
             @Override
             public void onResponse(Call<RegisterUser> call, Response<RegisterUser> response) {
 
@@ -159,6 +161,7 @@ public class LifestyleProfileActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     LifestyleProfile lifestyleProfile = response.body();
                     assert lifestyleProfile != null;
+                    lifestyleProfileId = String.valueOf(lifestyleProfile.getId());
 
                     if (lifestyleProfile.getNutritionA() != null) {
                         checkRadio("a" + lifestyleProfile.getNutritionA());
@@ -272,5 +275,16 @@ public class LifestyleProfileActivity extends AppCompatActivity {
         RadioButton radioDButton = findViewById(resID);
 
         radioDButton.setChecked(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
+        switch (item.getItemId()) {
+            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
+                finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
+                break;
+            default:break;
+        }
+        return true;
     }
 }

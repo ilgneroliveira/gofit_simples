@@ -10,8 +10,8 @@ public class ExerciseDone {
     private String id;
     private Exercise exercise;
     private User user;
-    private String execute_at;
-    private String time_execute;
+    private String executeAt;
+    private String timeExecute;
 
     public String getId() {
         return id;
@@ -38,18 +38,18 @@ public class ExerciseDone {
     }
 
     public String getExecute_at() {
-        return execute_at;
+        return executeAt;
     }
 
     public void setExecute_at(String execute_at) {
-        this.execute_at = execute_at;
+        this.executeAt = execute_at;
     }
 
-    public String getTime_execute() {
-        return time_execute;
+    public String getTimeExecute() {
+        return timeExecute;
     }
 
-    public void setTime_execute(String time_execute) {
-        this.time_execute = time_execute;
+    public void setTimeExecute(String timeExecute) {
+        this.timeExecute = timeExecute;
     }
 }

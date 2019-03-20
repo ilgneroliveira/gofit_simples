@@ -118,7 +118,7 @@
         <!--android:layout_marginBottom="20dp"-->
         <!--android:layout_marginStart="20dp"-->
         <!--android:text="@string/inscreva_se"-->
-        <!--android:textColor="@android:color/background_light"-->
+        <!--android:textColor="@color/textColorPrimary"-->
         <!--android:textSize="16sp"-->
         <!--app:layout_constraintBottom_toBottomOf="parent"-->
         <!--app:layout_constraintStart_toStartOf="parent" />-->
@@ -130,7 +130,7 @@
         <!--android:layout_marginBottom="16dp"-->
         <!--android:layout_marginEnd="16dp"-->
         <!--android:text="@string/esqeuceu_a_senha"-->
-        <!--android:textColor="@android:color/background_light"-->
+        <!--android:textColor="@color/textColorPrimary"-->
         <!--android:textSize="16sp"-->
         <!--app:layout_constraintBottom_toBottomOf="parent"-->
         <!--app:layout_constraintEnd_toEndOf="parent"-->
