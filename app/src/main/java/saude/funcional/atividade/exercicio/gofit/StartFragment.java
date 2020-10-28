@@ -1,5 +1,6 @@
 package saude.funcional.atividade.exercicio.gofit;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class StartFragment extends Fragment {
 
     String userId;
+    ProgressDialog dialog;
 
     public StartFragment() {
         // Required empty public constructor
@@ -35,8 +37,9 @@ public class StartFragment extends Fragment {
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         userId = sharedPref.getString("id", null);
 
+        dialog = ProgressDialog.show(inflater.getContext(), "Carregando", "Aguarde...");
         ExerciseControl.recommendation(view,userId,getApplicationContext());
-
+        dialog.dismiss();
         return view;
     }
 

@@ -20,6 +20,7 @@ public class Exercise {
     private String question_three;
     private String weight_question_three;
     private String featuredImageUrl;
+    private String featured_image_url;
 
     public String getTitle() {
         return title;
@@ -123,5 +124,13 @@ public class Exercise {
 
     public void setFeaturedImageUrl(String featuredImageUrl) {
         this.featuredImageUrl = featuredImageUrl;
+    }
+
+    public String getFeatured_image_url() {
+        return featured_image_url;
+    }
+
+    public void setFeatured_image_url(String featured_image_url) {
+        this.featured_image_url = featured_image_url;
     }
 }

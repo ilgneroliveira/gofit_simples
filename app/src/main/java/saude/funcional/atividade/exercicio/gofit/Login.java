@@ -1,6 +1,7 @@
 package saude.funcional.atividade.exercicio.gofit;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -43,6 +44,7 @@ import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 
 public class Login extends AppCompatActivity {
     private CallbackManager callbackManager;
+    ProgressDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,13 +83,14 @@ public class Login extends AppCompatActivity {
         }
 
         LoginButton loginButton = findViewById(R.id.login_button);
-        List<String> facebookPermitions = Arrays.asList("email", "public_profile", "user_age_range", "user_birthday", "user_gender");
+        List<String> facebookPermitions = Arrays.asList("user_photos ","email", "public_profile", "user_age_range", "user_birthday", "user_gender");
         loginButton.setReadPermissions(facebookPermitions);
         callbackManager = CallbackManager.Factory.create();
-
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+
             @Override
             public void onSuccess(LoginResult loginResult) {
+                dialog = ProgressDialog.show(Login.this, "Carregando", "Aguarde...");
                 GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
@@ -157,6 +160,7 @@ public class Login extends AppCompatActivity {
                         editor.apply();
                     }
 
+                    dialog.dismiss();
                     Intent intent = new Intent(Login.this, HomeActivity.class);
                     startActivity(intent);
                 } else {

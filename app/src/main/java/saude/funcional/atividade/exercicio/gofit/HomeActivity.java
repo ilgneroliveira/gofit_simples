@@ -1,40 +1,42 @@
 package saude.funcional.atividade.exercicio.gofit;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.view.View;
+import android.widget.FrameLayout;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import saude.funcional.atividade.exercicio.gofit.Callback.GetUserCallback;
 import saude.funcional.atividade.exercicio.gofit.Model.AuthenticateUser;
+import saude.funcional.atividade.exercicio.gofit.Model.User;
+import saude.funcional.atividade.exercicio.gofit.Request.UserRequest;
 import saude.funcional.atividade.exercicio.gofit.Service.RetrofitService;
 import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 
-public class HomeActivity extends AppCompatActivity {
-    private TabLayout tabLayout;
+public class HomeActivity extends AppCompatActivity implements GetUserCallback.IGetUserResponse {
     Toolbar toolbar;
     String userId;
+    FragmentManager fragmentManager;
+    FragmentTransaction fragmentTransaction;
+    SimpleDraweeView imagePerfil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fresco.initialize(this);
         setContentView(R.layout.activity_home);
 
         toolbar = findViewById(R.id.toolbar);
@@ -43,17 +45,15 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences sharedPref =  getApplicationContext().getSharedPreferences("user",Context.MODE_PRIVATE);
         userId = sharedPref.getString("id", null);
 
-        ViewPager viewPager = findViewById(R.id.viewpager);
-        setupViewPager(viewPager);
-
-        tabLayout = findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
+        imagePerfil = findViewById(R.id.imagePerfil);
+        FrameLayout viewPager = findViewById(R.id.viewpager);
+        setupViewPager();
 
         testLifestyleProfile();
 
-        setupTabIcons();
+//        setupTabIcons();
 
-        tabEvents();
+//        tabEvents();
     }
 
     private void testLifestyleProfile() {
@@ -86,88 +86,36 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
-    private void tabEvents() {
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                switch (tab.getPosition()) {
-                    case 0:
-
-                        break;
-                    case 1:
-
-                        break;
-                    case 2:
-
-                        break;
-                }
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
+    private void setupViewPager() {
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.viewpager, new StartFragment(), "Inicio");
+        fragmentTransaction.commit();
     }
 
-    @SuppressLint("SetTextI18n")
-    private void setupTabIcons() {
-        TextView tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabOne.setText("Inicio");
-        tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.home, 0, 0);
-        tabLayout.getTabAt(0).setCustomView(tabOne);
-
-        TextView tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabTwo.setText("Buscar");
-        tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.search, 0, 0);
-        tabLayout.getTabAt(1).setCustomView(tabTwo);
-
-        TextView tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
-        tabThree.setText("Mais");
-        tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.mipmap.menu, 0, 0);
-        tabLayout.getTabAt(2).setCustomView(tabThree);
+    public void onClick(View v) {
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.saerch:
+                intent = new Intent(getApplicationContext(), Search.class);
+                startActivity(intent);
+                break;
+            case R.id.imagePerfil:
+                intent = new Intent(getApplicationContext(), PerfilActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
-    private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new StartFragment(), "Inicio");
-        adapter.addFragment(new SearchFragment(), "Buscar");
-        adapter.addFragment(new MenuFragment(), "Mais");
-        viewPager.setAdapter(adapter);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        UserRequest.makeUserRequest(new GetUserCallback(HomeActivity.this).getCallback());
     }
 
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        ViewPagerAdapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return mFragmentList.size();
-        }
-
-        void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
-        }
+    @Override
+    public void onCompleted(User user) {
+        imagePerfil.setImageURI(user.getPicture());
     }
 
     @Override

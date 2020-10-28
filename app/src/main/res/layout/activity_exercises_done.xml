@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#90AAAAAA"
     tools:context=".ExercisesDoneActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -21,10 +22,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:title="@string/hist_rico_de_exercicios"
             android:textAlignment="center"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/hist_rico_de_exercicios" />
 
     </android.support.design.widget.AppBarLayout>
 

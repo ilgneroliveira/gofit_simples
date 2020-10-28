@@ -8,6 +8,7 @@ package saude.funcional.atividade.exercicio.gofit.Model;
  */
 public class AuthenticateUser {
     private String id;
+    private String exercise_id;
     private String email;
     private String password;
     private boolean is_valid;
@@ -51,5 +52,13 @@ public class AuthenticateUser {
 
     public void setIs_get(boolean is_get) {
         this.is_get = is_get;
+    }
+
+    public String getId_exercise() {
+        return exercise_id;
+    }
+
+    public void setId_exercise(String idExercise) {
+        this.exercise_id = idExercise;
     }
 }

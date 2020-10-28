@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.loopj.android.image.SmartImageView;
@@ -17,17 +16,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import saude.funcional.atividade.exercicio.gofit.ExerciseDoneShowActivity;
 import saude.funcional.atividade.exercicio.gofit.Model.ExerciseDone;
-import saude.funcional.atividade.exercicio.gofit.Model.ExerciseRecommedation;
 import saude.funcional.atividade.exercicio.gofit.R;
 import saude.funcional.atividade.exercicio.gofit.ShowExersiceActivity;
 
-public class ExerciseDoneAdapter extends RecyclerView.Adapter<ExerciseDoneAdapter.GroceryViewHolder> {
+public class ExerciseDoneShowAdapter extends RecyclerView.Adapter<ExerciseDoneShowAdapter.GroceryViewHolder> {
     private List<ExerciseDone> horizontalGrocderyList;
     Context context;
 
-    public ExerciseDoneAdapter(List<ExerciseDone> horizontalGrocderyList, Context context) {
+    public ExerciseDoneShowAdapter(List<ExerciseDone> horizontalGrocderyList, Context context) {
         this.horizontalGrocderyList = horizontalGrocderyList;
         this.context = context;
     }
@@ -42,9 +39,6 @@ public class ExerciseDoneAdapter extends RecyclerView.Adapter<ExerciseDoneAdapte
 
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
-        holder.imageView.setImageUrl(horizontalGrocderyList.get(position).getExercise().getFeaturedImageUrl());
-        holder.imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-        holder.txtview.setText(horizontalGrocderyList.get(position).getExercise().getTitle());
         String dataNew = "";
 
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -59,7 +53,6 @@ public class ExerciseDoneAdapter extends RecyclerView.Adapter<ExerciseDoneAdapte
 
         holder.txtview1.setText(dataNew);
         holder.txtview3.setText(horizontalGrocderyList.get(position).getTimeExecute());
-
     }
 
     @Override
@@ -68,18 +61,12 @@ public class ExerciseDoneAdapter extends RecyclerView.Adapter<ExerciseDoneAdapte
     }
 
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
-        SmartImageView imageView;
-        TextView txtview;
         TextView txtview1;
-        TextView txtview2;
         TextView txtview3;
 
         public GroceryViewHolder(View view) {
             super(view);
-            imageView = view.findViewById(R.id.idImage);
-            txtview = view.findViewById(R.id.idName);
             txtview1 = view.findViewById(R.id.idExecuteAt);
-//            txtview2 = view.findViewById(R.id.idHora);
             txtview3 = view.findViewById(R.id.idTime);
         }
     }

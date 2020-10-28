@@ -5,6 +5,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "saude.funcional.atividade.exercicio.gofit"
+        vectorDrawables.useSupportLibrary = true
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1
@@ -43,7 +44,22 @@ dependencies {
     implementation files('libs/android-smart-image-view-1.0.0.jar')
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.facebook.fresco:fresco:1.13.0'
+    compile 'com.github.blackfizz:eazegraph:1.2.2@aar'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'com.github.devsideal:VectorChildFinder:1.0.0'
+
+//    implementation 'com.android.support:gridlayout-v7:27.1.1'
+//    implementation "com.mikepenz:materialdrawer:6.1.2"
+
+//required support lib modules
+//    modulesimplementation "androidx.appcompat:appcompat:${versions.androidX}"
+//    implementation "androidx.recyclerview:recyclerview:${versions.androidX}"
+//    implementation "androidx.annotation:annotation:${versions.androidX}"
+//    implementation "com.google.android.material:material:${versions.androidX}"
+//    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}"
 }
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }

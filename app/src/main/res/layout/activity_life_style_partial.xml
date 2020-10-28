@@ -90,6 +90,12 @@
                 android:padding="10px"
                 android:text="@string/item_3" />
 
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+
             <TextView
 
                 android:layout_width="match_parent"
@@ -97,7 +103,9 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:padding="10px"
                 android:text="@string/atividade_fisica_d"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
 
             <RadioGroup
                 android:id="@+id/d"
@@ -111,15 +119,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="0"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
-
                     android:id="@+id/d1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="1"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -127,7 +136,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="2"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -135,7 +145,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="3"
+                    android:buttonTint="@android:color/darker_gray"/>
             </RadioGroup>
 
             <TextView
@@ -145,7 +156,9 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:padding="10px"
                 android:text="@string/atividade_fisica_e"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
 
             <RadioGroup
                 android:id="@+id/e"
@@ -159,7 +172,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="0"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -167,7 +181,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="1"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -175,7 +190,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="2"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -183,7 +199,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="3"
+                    android:buttonTint="@android:color/darker_gray"/>
             </RadioGroup>
 
             <TextView
@@ -193,7 +210,9 @@
                 android:gravity="center_vertical|center_horizontal"
                 android:padding="10px"
                 android:text="@string/atividade_fisica_f"
-                android:textAlignment="center" />
+                android:textAlignment="center"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
 
             <RadioGroup
                 android:id="@+id/f"
@@ -207,7 +226,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="0" />
+                    android:text="0"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -215,7 +235,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="1" />
+                    android:text="1"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -223,7 +244,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="2" />
+                    android:text="2"
+                    android:buttonTint="@android:color/darker_gray"/>
 
                 <RadioButton
 
@@ -231,7 +253,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="3" />
+                    android:text="3"
+                    android:buttonTint="@android:color/darker_gray"/>
             </RadioGroup>
 
             <Button

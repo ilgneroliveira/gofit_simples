@@ -15,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ServiceGenerator {
     //URL base do endpoint. Deve sempre terminar com /
-    private static final String API_BASE_URL = "http://ec2-35-162-202-113.us-west-2.compute.amazonaws.com/";
+    private static final String API_BASE_URL = "http://ec2-54-243-6-215.compute-1.amazonaws.com/";
 
 //    public static <S> S createService(Class<S> serviceClass) {
 //

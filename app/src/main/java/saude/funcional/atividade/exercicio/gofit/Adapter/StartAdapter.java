@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,7 @@ public class StartAdapter extends RecyclerView.Adapter<StartAdapter.GroceryViewH
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         holder.imageView.setImageUrl(horizontalGrocderyList.get(position).getExercise().getFeaturedImageUrl());
+        holder.imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
         holder.txtview.setText(horizontalGrocderyList.get(position).getExercise().getTitle());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override

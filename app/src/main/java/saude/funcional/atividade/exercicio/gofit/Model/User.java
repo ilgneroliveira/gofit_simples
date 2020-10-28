@@ -1,5 +1,7 @@
 package saude.funcional.atividade.exercicio.gofit.Model;
 
+import android.net.Uri;
+
 /**
  * User
  *
@@ -8,7 +10,7 @@ package saude.funcional.atividade.exercicio.gofit.Model;
  */
 public class User {
 
-    private int id;
+    private String id;
 
     private String name;
 
@@ -30,11 +32,31 @@ public class User {
 
     private String login;
 
-    public int getId() {
+    private Uri picture;
+
+    private Uri public_profile;
+
+    private String permissions;
+
+    public User(Uri picture, String name,
+                String id, String email, String permissions) {
+//        this.public_profile = public_profile;
+        this.picture = picture;
+        this.name = name;
+        this.id = id;
+        this.email = email;
+        this.permissions = permissions;
+    }
+
+    public User(){
+
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -116,5 +138,29 @@ public class User {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Uri getPicture() {
+        return picture;
+    }
+
+    public String getPermissions() {
+        return permissions;
+    }
+
+    public void setPicture(Uri picture) {
+        this.picture = picture;
+    }
+
+    public Uri getPublic_profile() {
+        return public_profile;
+    }
+
+    public void setPublic_profile(Uri public_profile) {
+        this.public_profile = public_profile;
+    }
+
+    public void setPermissions(String permissions) {
+        this.permissions = permissions;
     }
 }

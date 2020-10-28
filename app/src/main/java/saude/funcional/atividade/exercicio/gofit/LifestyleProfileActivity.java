@@ -15,6 +15,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import java.util.Objects;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +39,7 @@ public class LifestyleProfileActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         SharedPreferences sharedPref = getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         userId = sharedPref.getString("id", null);
@@ -117,11 +119,11 @@ public class LifestyleProfileActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     RegisterUser registerUser = response.body();
                     Log.i("SaveLifeStyleProfile", registerUser.getMessage());
-                    if (registerUser.getSuccess() == 1) {
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
+//                    if (registerUser.getSuccess() == 1) {
+//                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+//                        startActivity(intent);
                         dialog.dismiss();
-                    }
+//                    }
                     Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 } else {
                     Log.i("SaveLifeStyleProfile", "Erro ao salvar seu perfil.");
@@ -275,16 +277,5 @@ public class LifestyleProfileActivity extends AppCompatActivity {
         RadioButton radioDButton = findViewById(resID);
 
         radioDButton.setChecked(true);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
-        switch (item.getItemId()) {
-            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
-                finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
-                break;
-            default:break;
-        }
-        return true;
     }
 }

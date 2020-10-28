@@ -12,55 +12,58 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import saude.funcional.atividade.exercicio.gofit.Adapter.ExerciseDoneAdapter;
-import saude.funcional.atividade.exercicio.gofit.Adapter.StartAdapter;
+import saude.funcional.atividade.exercicio.gofit.Adapter.ExerciseDoneShowAdapter;
 import saude.funcional.atividade.exercicio.gofit.Model.AuthenticateUser;
-import saude.funcional.atividade.exercicio.gofit.Model.ExerciseDoneUser;
 import saude.funcional.atividade.exercicio.gofit.Model.ExerciseDoneUser;
 import saude.funcional.atividade.exercicio.gofit.Service.RetrofitService;
 import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 
-public class ExercisesDoneActivity extends AppCompatActivity {
+public class ExerciseDoneShowActivity extends AppCompatActivity {
+
     RecyclerView rvExercisesDone;
     TextView tvExerciseDone;
     String userId;
+    String exerciseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        setContentView(R.layout.activity_exercises_done);
-
+        setContentView(R.layout.activity_exercise_done_show);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Bundle bundle = getIntent().getExtras();
+        toolbar.setTitle(bundle.getString("title"));
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         rvExercisesDone = findViewById(R.id.rvExercisesDone);
-//        tvExerciseDone = findViewById(R.id.tvExercisesDone);
+        tvExerciseDone = findViewById(R.id.tvExercisesDone);
 //        tvExerciseDone = findViewById(R.id.tvExercisesDone);
         TextView tvExerciseDone = new TextView(this);
         tvExerciseDone.setText("Nenhum resultado encontrado");
 
         SharedPreferences sharedPref =  getApplicationContext().getSharedPreferences("user", Context.MODE_PRIVATE);
         userId = sharedPref.getString("id", null);
-
+        exerciseId = bundle.getString("id");
         find();
     }
 
     public void find(){
         AuthenticateUser authenticate_user = new AuthenticateUser();
         authenticate_user.setId(userId);
+        authenticate_user.setId_exercise(exerciseId);
         RetrofitService service = ServiceGenerator.createService(RetrofitService.class);
-        service.findExercisesDoneUser(authenticate_user).enqueue(new Callback<ExerciseDoneUser>() {
+        service.findExercisesDoneUserAndExercise(authenticate_user).enqueue(new Callback<ExerciseDoneUser>() {
             @Override
             public void onResponse(Call<ExerciseDoneUser> call, Response<ExerciseDoneUser> response) {
                 boolean is_exercises = false;
@@ -71,15 +74,15 @@ public class ExercisesDoneActivity extends AppCompatActivity {
                     if (exerciseDoneUser != null) {
                         if (exerciseDoneUser.getExercisesDone() != null) {
                             rvExercisesDone.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayoutManager.VERTICAL));
-                            ExerciseDoneAdapter adapter2 = new ExerciseDoneAdapter(exerciseDoneUser.getExercisesDone(), getApplicationContext());
-                            GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 3);
-                            rvExercisesDone.setLayoutManager(gridLayoutManager);
+                            ExerciseDoneShowAdapter adapter2 = new ExerciseDoneShowAdapter(exerciseDoneUser.getExercisesDone(), getApplicationContext());
+                            LinearLayoutManager verticalLayoutManager = new LinearLayoutManager(ExerciseDoneShowActivity.this, LinearLayoutManager.VERTICAL, false);
+                            rvExercisesDone.setLayoutManager(verticalLayoutManager);
                             rvExercisesDone.setAdapter(adapter2);
                             adapter2.notifyDataSetChanged();
 
                             if (exerciseDoneUser.getExercisesDone().size() > 0) {
-//                                title = "";
-//                                tvExerciseDone.setText(title);
+                                title = "Histórico";
+                                tvExerciseDone.setText(title);
                                 is_exercises = true;
                             }
                         }
@@ -106,14 +109,4 @@ public class ExercisesDoneActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) { //Botão adicional na ToolBar
-        switch (item.getItemId()) {
-            case android.R.id.home:  //ID do seu botão (gerado automaticamente pelo android, usando como está, deve funcionar
-                finish();  //Método para matar a activity e não deixa-lá indexada na pilhagem
-                break;
-            default:break;
-        }
-        return true;
-    }
 }

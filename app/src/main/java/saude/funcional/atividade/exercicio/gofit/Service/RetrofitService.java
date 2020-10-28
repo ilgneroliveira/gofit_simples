@@ -65,4 +65,7 @@ public interface RetrofitService {
 
     @POST("/exercises/done/user")
     Call<ExerciseDoneUser> findExercisesDoneUser(@Body AuthenticateUser authenticate_user);
+
+    @POST("/exercises/done/user/exercise")
+    Call<ExerciseDoneUser> findExercisesDoneUserAndExercise(@Body AuthenticateUser authenticate_user);
 }

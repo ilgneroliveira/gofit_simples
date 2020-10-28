@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SerFit</string>
+    <string name="app_name"><b>Ser</b>Fit</string>
     <string name="teste">Teste</string>
     <string name="email">Email</string>
     <string name="senha">Senha</string>
@@ -43,6 +43,7 @@
     <string name="buscar">Buscar</string>
     <string name="exercicios_agendados">Exercicios Agendados</string>
     <string name="perfil_do_estilo_de_vida">Perfil do estilo de vida</string>
+    <string name="perfil">Perfil</string>
     <string name="conta">Conta</string>
     <string name="ajuda">Ajuda</string>
     <string name="sair">Sair</string>
@@ -61,29 +62,35 @@
     <string name="item_3">(3) Faz parte do meu estilo de vida</string>
 
 
-    <string name="nutricao_a">Sua alimentaçãodiária inclui ao menos 5 porções de frutas e verduras</string>
-    <string name="nutricao_b">Você evita ingerir alimentos gordurosos (carnes gordas, friuras) e doces</string>
-    <string name="nutricao_c">Você faz 4 e 5 refeições variadas ao dia, incluindo café da manhã completo</string>
+    <string name="nutricao_a">Sua alimentação diária inclui ao menos 5 porções de frutas e verduras?</string>
+    <string name="nutricao_b">Você evita ingerir alimentos gordurosos (carnes gordas, frituras) e doces?</string>
+    <string name="nutricao_c">Você faz 4 e 5 refeições variadas ao dia, incluindo café da manhã completo?</string>
 
-    <string name="atividade_fisica_d">Você realiza ao menos 30 minutos de atividade físicas moderadas/intensas,de forma continua ou acumulada,5 ou mais dias na semana.</string>
-    <string name="atividade_fisica_e">Ao menos duas vezes por semana,você realiza exercícios que envolvem forca e alongamento muscular.</string>
-    <string name="atividade_fisica_f">No seu dia a dia, você caminha ou pedala como meio de transporte e ,preferencialmente,usa as escadas ao invés do elevador.</string>
+    <string name="atividade_fisica_d">Você realiza ao menos 30 minutos de atividade físicas moderadas/intensas,de forma continua ou acumulada,5 ou mais dias na semana?</string>
+    <string name="atividade_fisica_e">Ao menos duas vezes por semana,você realiza exercícios que envolvem forca e alongamento muscular?</string>
+    <string name="atividade_fisica_f">No seu dia a dia, você caminha ou pedala como meio de transporte e ,preferencialmente,usa as escadas ao invés do elevador?</string>
 
-    <string name="comportamento_g">Você conhece sua pressão arterial, seus niveis de colesterol e procura controlá-los.</string>
-    <string name="comportamento_h">Você tem o hábito de se preocupar com a quantidade de horas que deve dormir por noite.</string>
-    <string name="comportamento_i">Você respeita as regras de trânsito, como pedestre ou ciclista.</string>
+    <string name="comportamento_g">Você conhece sua pressão arterial, seus níveis de colesterol e procura controlá-los?</string>
+    <string name="comportamento_h">Você tem o hábito de se preocupar com a quantidade de horas que deve dormir por noite?</string>
+    <string name="comportamento_i">Você respeita as regras de trânsito, como pedestre ou ciclista?</string>
 
-    <string name="relacionamentos_j">Você procura cultivar amigos e está satisfeito com seus relacionamentos.</string>
-    <string name="relacionamentos_k">Seu lazer inclui encontros com amigos, atividades esportivas em grupo, participação em associações ou entidades sociais. </string>
-    <string name="relacionamentos_l">Você procura ser ativo em sua comunidade, sentindo-se útil no seu ambiente social.</string>
+    <string name="relacionamentos_j">Você procura cultivar amigos e está satisfeito com seus relacionamentos?</string>
+    <string name="relacionamentos_k">Seu lazer inclui encontros com amigos, atividades esportivas em grupo, participação em associações ou entidades sociais?</string>
+    <string name="relacionamentos_l">Você procura ser ativo em sua comunidade, sentindo-se útil no seu ambiente social?</string>
 
-    <string name="controle_m">Você reserva tempo(ao menos 5 minutos)todos os dias para relaxar.</string>
-    <string name="controle_n">Você mantém uma discussão sem alterar-se, mesmo quando contrariado.</string>
-    <string name="controle_o">Você equilibra o tempo dedicado ao trabalho com o tempo dedicado ao lazer.</string>
+    <string name="controle_m">Você reserva tempo(ao menos 5 minutos)todos os dias para relaxar?</string>
+    <string name="controle_n">Você mantém uma discussão sem alterar-se, mesmo quando contrariado?</string>
+    <string name="controle_o">Você equilibra o tempo dedicado ao trabalho com o tempo dedicado ao lazer?</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="hist_rico_de_exercicios">Histórico de exercícios</string>
     <string name="title_activity_exercises_done">ExercisesDoneActivity</string>
     <string name="buscando_hist_rico">Buscando Histórico</string>
+    <string name="exercicio">Exercécio</string>
+    <string name="title_activity_exercise_done_show">ExerciseDoneShowActivity</string>
+    <string name="title_activity_search">Search</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="questionario_parcial">Questionario parcial</string>
+    <string name="questionario_completo">Questionario completo</string>
 
 
 </resources>

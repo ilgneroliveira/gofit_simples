@@ -1,21 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_margin="5dp"
-    android:orientation="vertical">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_margin="2dp"
+android:orientation="vertical">
 
-    <com.loopj.android.image.SmartImageView
-        android:id="@+id/idImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_gravity="center" />
+<com.loopj.android.image.SmartImageView
+    android:id="@+id/idImage"
+    android:layout_width="100dp"
+    android:layout_height="140dp"
+    android:layout_gravity="center"
+    tools:ignore="MissingConstraints" />
 
-    <TextView
-        android:id="@+id/idName"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
-        android:textAlignment="center"
-        android:textSize="15sp" />
-</LinearLayout>
+<TextView
+    android:id="@+id/idName"
+    android:layout_width="100dp"
+    android:layout_height="35dp"
+    android:background="#d7aaaaaa"
+    android:paddingTop="2dp"
+    android:textAlignment="center"
+    android:textColor="@android:color/background_dark"
+    android:textSize="13sp"
+    app:layout_constraintBottom_toBottomOf="@+id/idImage"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

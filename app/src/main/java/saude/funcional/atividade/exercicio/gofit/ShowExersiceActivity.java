@@ -4,20 +4,27 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.loopj.android.image.SmartImageView;
+
+import java.util.Objects;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -29,9 +36,10 @@ import saude.funcional.atividade.exercicio.gofit.Model.RegisterUser;
 import saude.funcional.atividade.exercicio.gofit.Service.RetrofitService;
 import saude.funcional.atividade.exercicio.gofit.Service.ServiceGenerator;
 
-public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener     {
+public class ShowExersiceActivity extends AppCompatActivity implements YouTubePlayer.OnInitializedListener     {
     SmartImageView ivExerciseShow;
-    TextView titleExercise;
+    TextView tvDescription;
+    Button button2;
     Toolbar toolbar;
     private static TextView section_label;
     private static long initialTime;
@@ -39,6 +47,7 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
     private static boolean isRunning;
     private static final long MILLIS_IN_SEC = 1000L;
     private static final int SECS_IN_MIN = 60;
+    private static final int SECS_IN_HORA = 3600;
     private static FloatingActionButton fab;
     public static ExerciseDoneSave exerciseDone;
     public static ProgressDialog dialog;
@@ -53,9 +62,10 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_exersice);
 
-        toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar = findViewById(R.id.toolbarShowExercicise);
+
+        setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         context = getApplicationContext();
         section_label = findViewById(R.id.section_label);
@@ -66,8 +76,9 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
         exerciseDone.setUser_id(userId);
         setupStopwatch();
 
-        titleExercise = findViewById(R.id.titleExercise);
-//        ivExerciseShow = findViewById(R.id.ivExerciseShow);
+        tvDescription = findViewById(R.id.tvDescription);
+        button2 = findViewById(R.id.button2);
+        ivExerciseShow = findViewById(R.id.ivExerciseShow);
 
         RetrofitService service = ServiceGenerator.createService(RetrofitService.class);
 
@@ -84,17 +95,31 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
             public void onResponse(Call<Exercise> call, Response<Exercise> response) {
 
                 if (response.isSuccessful()) {
-                    Exercise exercise = response.body();
+                    final Exercise exercise = response.body();
                     exerciseDone.setExercise_id(exercise.getId());
                     //verifica aqui se o corpo da resposta não é nulo
                     if (exercise != null) {
-                        titleExercise.setText(exercise.getTitle());
-//                        ivExerciseShow.setImageUrl(exercise.getFeaturedImageUrl());
+                        toolbar.setTitle(exercise.getTitle());
+                        tvDescription.setText(exercise.getDescription());
+                        ivExerciseShow.setImageUrl(exercise.getFeaturedImageUrl());
+                        ivExerciseShow.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                         // Initializing YouTube player view
-                        ShowExersiceActivity.VIDEO_ID = exercise.getMediaUrl();
-                        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
-                        youTubePlayerView.initialize(API_KEY, ShowExersiceActivity.this);
+//                        ShowExersiceActivity.VIDEO_ID = exercise.getMediaUrl();
+//                        YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
+
+//                        YouTubePlayerSupportFragment frag =
+//                                (YouTubePlayerSupportFragment) getSupportFragmentManager().findFragmentById(R.id.youtube_player_view);
+//                        frag.initialize(API_KEY, ShowExersiceActivity.this);
+
+                        button2.setOnClickListener(new View.OnClickListener() {
+                            public void onClick(View v) {
+                                String url = exercise.getMediaUrl();
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+                                i.setData(Uri.parse(url));
+                                startActivity(i);
+                            }
+                        });
                     } else {
                         Toast.makeText(getApplicationContext(), "Resposta nula do servidor", Toast.LENGTH_SHORT).show();
                     }
@@ -117,7 +142,11 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
         public void run() {
             if (isRunning) {
                 long seconds = (System.currentTimeMillis() - initialTime) / MILLIS_IN_SEC;
-                section_label.setText(String.format("%02d:%02d", seconds / SECS_IN_MIN, seconds % SECS_IN_MIN));
+                long input = seconds;// 1h : 30 min : 18 seg
+                long horas = input / 3600;
+                long minutos = (input - (horas * 3600)) / 60;
+                long segundos = input - (horas * 3600) - (minutos * 60);
+                section_label.setText(String.format("%dh %dm %ds", horas, minutos, segundos));
                 handler.postDelayed(runnable, MILLIS_IN_SEC);
             }
         }
@@ -171,7 +200,7 @@ public class ShowExersiceActivity extends YouTubeBaseActivity implements YouTube
                         }
                     });
 
-                    section_label.setText("00:00");
+                    section_label.setText("0h 0m 0s");
                 }
             }
         });

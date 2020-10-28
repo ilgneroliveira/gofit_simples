@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbarSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary"
+            android:textAlignment="center"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:title="@string/buscar">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/btSearch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:drawableEnd="@mipmap/search"
+                    android:hint="@string/buscar"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textCapWords|textPersonName"
+                    android:padding="5dp"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <TextView
+        android:id="@+id/tvNoResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="@string/buscas_recentes"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="18sp" />
+
+    <GridView
+        android:id="@+id/lvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:columnWidth="50dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="3"
+        android:paddingStart="10dp"
+        android:paddingBottom="20dp"
+        android:scrollbars="vertical"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp">
+
+
+    </GridView>
+
+</LinearLayout>
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:fillViewport="false">-->
+    <!---->
+<!--</ScrollView>-->
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fillViewport="false">-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<android.support.design.widget.AppBarLayout-->
+            <!--android:id="@+id/appBarLayout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="69dp"-->
+            <!--android:gravity="center"-->
+            <!--android:textAlignment="center"-->
+            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--tools:ignore="MissingConstraints"-->
+            <!--tools:layout_editor_absoluteX="0dp">-->
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/toolbarSearch"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/colorPrimary"-->
+                <!--android:textAlignment="center"-->
+                <!--app:layout_scrollFlags="scroll|enterAlways"-->
+                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+                <!--app:title="@string/buscar">-->
+
+                <!--<android.support.design.widget.TextInputLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content">-->
+
+                    <!--<android.support.design.widget.TextInputEditText-->
+                        <!--android:id="@+id/btSearch"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_marginRight="10dp"-->
+                        <!--android:drawableEnd="@mipmap/search"-->
+                        <!--android:hint="@string/buscar"-->
+                        <!--android:imeOptions="actionSearch"-->
+                        <!--android:inputType="textCapWords|textPersonName"-->
+                        <!--android:padding="5dp"-->
+                        <!--android:singleLine="true" />-->
+                <!--</android.support.design.widget.TextInputLayout>-->
+            <!--</android.support.v7.widget.Toolbar>-->
+
+        <!--</android.support.design.widget.AppBarLayout>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tvNoResult"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical|center_horizontal"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/buscas_recentes"-->
+            <!--android:textColor="@color/textColorPrimary"-->
+            <!--android:textSize="18sp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />-->
+
+        <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:id="@+id/lvResult"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_marginStart="24dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:columnWidth="90dp"-->
+            <!--android:gravity="center"-->
+            <!--android:horizontalSpacing="10dp"-->
+            <!--android:numColumns="3"-->
+            <!--android:paddingLeft="10dp"-->
+            <!--android:scrollbars="vertical"-->
+            <!--android:stretchMode="columnWidth"-->
+            <!--android:verticalSpacing="10dp"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.48"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/tvNoResult"-->
+            <!--app:layout_constraintVertical_bias="0.0">-->
+
+
+        <!--</GridView>-->
+    <!--</LinearLayout>-->
+<!--</ScrollView>-->
+
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/frameLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="#90AAAAAA"-->
+    <!--android:orientation="vertical">-->
+
+
+    <!--<android.support.design.widget.AppBarLayout-->
+    <!--android:id="@+id/appBarLayout"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="69dp"-->
+    <!--android:gravity="center"-->
+    <!--android:textAlignment="center"-->
+    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+    <!--app:layout_constraintTop_toTopOf="parent"-->
+    <!--tools:ignore="MissingConstraints"-->
+    <!--tools:layout_editor_absoluteX="0dp">-->
+
+    <!--<android.support.v7.widget.Toolbar-->
+    <!--android:id="@+id/toolbarSearch"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorPrimary"-->
+    <!--android:textAlignment="center"-->
+    <!--app:layout_scrollFlags="scroll|enterAlways"-->
+    <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
+    <!--app:title="@string/buscar">-->
+
+    <!--<android.support.design.widget.TextInputLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content">-->
+
+    <!--<android.support.design.widget.TextInputEditText-->
+    <!--android:id="@+id/btSearch"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginRight="10dp"-->
+    <!--android:drawableEnd="@mipmap/search"-->
+    <!--android:hint="@string/buscar"-->
+    <!--android:imeOptions="actionSearch"-->
+    <!--android:inputType="textCapWords|textPersonName"-->
+    <!--android:padding="5dp"-->
+    <!--android:singleLine="true" />-->
+    <!--</android.support.design.widget.TextInputLayout>-->
+    <!--&lt;!&ndash;<EditText&ndash;&gt;-->
+    <!--&lt;!&ndash;android:id="@+id/btSearch"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_height="45dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_margin="20sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:layout_marginTop="8dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:background="@drawable/edit_text_style"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:ellipsize="start"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:gravity="center_vertical|center_horizontal"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:hint="@string/buscar"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:imeOptions="actionSearch"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:inputType="textCapWords|textPersonName"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:padding="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;android:singleLine="true"&ndash;&gt;-->
+    <!--&lt;!&ndash;app:layout_constraintTop_toBottomOf="@+id/appBarLayout"&ndash;&gt;-->
+    <!--&lt;!&ndash;tools:layout_editor_absoluteX="20dp" />&ndash;&gt;-->
+    <!--</android.support.v7.widget.Toolbar>-->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/tvNoResult"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center_vertical|center_horizontal"-->
+    <!--android:layout_marginTop="8dp"-->
+    <!--android:gravity="center"-->
+    <!--android:text="@string/buscas_recentes"-->
+    <!--android:textColor="@color/textColorPrimary"-->
+    <!--android:textSize="18sp"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />-->
+
+    <!--<GridView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:id="@+id/lvResult"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="10dp"-->
+    <!--android:layout_marginStart="24dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:layout_marginBottom="8dp"-->
+    <!--android:columnWidth="90dp"-->
+    <!--android:gravity="center"-->
+    <!--android:horizontalSpacing="10dp"-->
+    <!--android:numColumns="3"-->
+    <!--android:paddingLeft="10dp"-->
+    <!--android:scrollbars="vertical"-->
+    <!--android:stretchMode="columnWidth"-->
+    <!--android:verticalSpacing="10dp"-->
+    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintHorizontal_bias="0.48"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/tvNoResult"-->
+    <!--app:layout_constraintVertical_bias="0.0">-->
+
+
+    <!--</GridView>-->
+    <!--</android.support.constraint.ConstraintLayout>-->

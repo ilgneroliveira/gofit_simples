@@ -65,53 +65,12 @@ public class SearchAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.item_list_search, null);
 
         SmartImageView tvSearchimage = view.findViewById(R.id.ivSearchImage);
-        tvSearchimage.setImageUrl(exercise.getFeaturedImageUrl());
-
-//        images.add(tvSearchimage);
-
-//        new SearchAdapter.DownloadImagemAsyncTask().execute(exercise.getFeatured_image_url(), i + "");
-//        i++;
+        tvSearchimage.setImageUrl(exercise.getFeatured_image_url());
+        tvSearchimage.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
         TextView tvSearchTitle = view.findViewById(R.id.tvSearchTitle);
         tvSearchTitle.setText(exercise.getTitle());
 
         return view;
     }
-
-//    private class DownloadImagemAsyncTask extends AsyncTask<String, Void, Bitmap> {
-//        private ImageView imagem_async;
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Bitmap doInBackground(String... params) {
-//            imagem_async = images.get(Integer.parseInt(params[1]));
-//            try {
-//                URL url = new URL(params[0]);
-//                HttpURLConnection conexao = (HttpURLConnection)
-//                        url.openConnection();
-//                conexao.setRequestMethod("GET");
-//                conexao.setDoInput(true);
-//                conexao.connect();
-//
-//                InputStream is = conexao.getInputStream();
-//                return BitmapFactory.decodeStream(is);
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//            return null;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(Bitmap result) {
-//            super.onPostExecute(result);
-//            if (result != null) {
-//                imagem_async.setImageBitmap(result);
-//            }
-//        }
-//    }
 }
